@@ -1,8 +1,9 @@
-CALCULADORA LOCA
+**CALCULADORA LOCA**
 
-REPOSITORIO: (https://github.com/VeraValverde/CALCULADORA_VERA.git)
 
-DESCRIPCIÓN:
+**REPOSITORIO:** (https://github.com/VeraValverde/CALCULADORA_VERA.git)
+
+**DESCRIPCIÓN:**
 Este proyecto es una calculadora loca, ya que no funciona como una calculadora normal.
 Presenta una serie de reglas y comportamientos poco normales:
    -No incluye el número 5 en sus botones.
@@ -12,7 +13,7 @@ Presenta una serie de reglas y comportamientos poco normales:
    -Los botones de operaciones también están desordenados: muestran símbolos que no corresponden a su función real (por ejemplo, “&” realiza una suma).
    -No se permiten divisiones entre 0 ni entre 1, para evitar resultados no válidos o indefinidos.
 
-INSTRUCCIONES DE EJECUCIÓN:
+**INSTRUCCIONES DE EJECUCIÓN:**
    1.Abrir el proyecto en Android Studio.
       (Se recomienda usar Android Studio Ladybug o superior (compatible con SDK 36)).
    2.Verificar la configuración del SDK:
@@ -28,7 +29,7 @@ INSTRUCCIONES DE EJECUCIÓN:
    6.Probar la calculadora:
       La interfaz de la Calculadora Loca se abrirá mostrando sus botones desordenados y podrás comenzar a usarla.
 
-MAPA DE DESORDEN:
+**MAPA DE DESORDEN:**
 Botón mostrado	   Número insertado
       0	                 2
       1	                 3
@@ -49,5 +50,5 @@ Símbolo mostrado	Operación real
 
 
 
-MAPA DE DESORDEN:
+**ENLACE VIDEO:**
 
