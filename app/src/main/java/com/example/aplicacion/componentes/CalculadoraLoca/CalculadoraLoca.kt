@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CalculadoraLoca(modifier: Modifier = Modifier) {
+    // Mostrar los numeros que se escriben y el resultado
     var expresion by remember { mutableStateOf("") }
     var resultado by remember { mutableStateOf("") }
 
@@ -51,7 +52,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-
+            //Mostrar la expresion escrita real
             Text(
                 text = expresion,
                 modifier = Modifier
@@ -60,7 +61,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 textAlign = TextAlign.End,
                 fontSize = 26.sp
             )
-
+            //Mostrar resultado
             Text(
                 text = if (resultado.isNotEmpty()) "Resultado: $resultado" else "",
                 modifier = Modifier
@@ -73,12 +74,11 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Crear filas
+            // Crear oden filas
             val filas = listOf(
                 listOf("7", "8", "9"),
-                listOf("4", "5", "6"),
-                listOf("1", "2", "3"),
-                listOf("0")
+                listOf("3", "4", "6"),
+                listOf("0", "1", "2")
             )
 
             for (fila in filas) {
@@ -134,6 +134,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
             ) {
+                //Boton limpiar todo
                 Button(
                     onClick = {
                         expresion = ""
@@ -148,7 +149,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 ) {
                     Text("C", fontSize = 22.sp, color = Color.Black)
                 }
-
+                //Crear resultado y si sale 5 poner un 6
                 Button(
                     onClick = {
                         try {
@@ -174,18 +175,43 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
 
 // Controlar divisiones por 0
 fun evaluarExpresion(exp: String): Int {
-    var partes: List<String>
+    var numero = ""
+    var operacion = '+'
+    var resultado = 0
 
-    return when {
-        exp.contains("+") -> exp.split("+").let { it[0].toInt() + it[1].toInt() }
-        exp.contains("-") -> exp.split("-").let { it[0].toInt() - it[1].toInt() }
-        exp.contains("*") -> exp.split("*").let { it[0].toInt() * it[1].toInt() }
-        exp.contains("/") -> {
-            partes = exp.split("/")
-            val divisor = partes[1].toInt()
-            if (divisor == 0) throw ArithmeticException("No se puede dividir entre 0")
-            partes[0].toInt() / divisor
+    for (c in exp) {
+        if (c.isDigit()) {
+            numero += c
+        } else {
+            val n = numero.toInt()
+            when (operacion) {
+                '+' -> resultado += n
+                '-' -> resultado -= n
+                '*' -> resultado *= n
+                '/' -> {
+                    if (n == 0) throw ArithmeticException("No se puede dividir entre 0")
+                    resultado /= n
+                }
+            }
+            operacion = c
+            numero = ""
         }
-        else -> 0
     }
+
+    // Aplicar el último número
+    if (numero.isNotEmpty()) {
+        val n = numero.toInt()
+        when (operacion) {
+            '+' -> resultado += n
+            '-' -> resultado -= n
+            '*' -> resultado *= n
+            '/' -> {
+                if (n == 0) throw ArithmeticException("No se puede dividir entre 0")
+                resultado /= n
+            }
+        }
+    }
+
+    return resultado
 }
+
