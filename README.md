@@ -50,5 +50,5 @@ Símbolo mostrado	Operación real
 
 
 
-**ENLACE VIDEO:**
+**ENLACE VIDEO:** https://youtu.be/enqkjxo8CjM?si=vKMdZlYb4lrY_U7I
 
