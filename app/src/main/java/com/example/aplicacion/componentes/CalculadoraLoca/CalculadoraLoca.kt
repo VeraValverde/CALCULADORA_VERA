@@ -173,7 +173,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
     }
 }
 
-// Controlar divisiones por 0
+// Operaciones concatenadas pero controlando ademas las divisiones entre 0
 fun evaluarExpresion(exp: String): Int {
     var numero = ""
     var operacion = '+'
