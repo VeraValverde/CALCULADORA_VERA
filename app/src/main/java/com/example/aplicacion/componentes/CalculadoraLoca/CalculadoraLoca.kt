@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CalculadoraLoca(modifier: Modifier = Modifier) {
-    // Mostrar los numeros que se escriben y el resultado
+    // Numeros que se escriben y el resultado
     var expresion by remember { mutableStateOf("") }
     var resultado by remember { mutableStateOf("") }
 
@@ -134,7 +134,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                //Boton limpiar todo
+                //Boton limpiar
                 Button(
                     onClick = {
                         expresion = ""
@@ -145,11 +145,11 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                         .padding(4.dp)
                         .height(70.dp),
                     shape = MaterialTheme.shapes.small,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFB6B6)) // rojo pastel
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFB6B6))
                 ) {
                     Text("C", fontSize = 22.sp, color = Color.Black)
                 }
-                //Crear resultado y si sale 5 poner un 6
+                //Resultado sin 5
                 Button(
                     onClick = {
                         try {
@@ -173,7 +173,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
     }
 }
 
-// Operaciones concatenadas pero controlando ademas las divisiones entre 0
 fun evaluarExpresion(exp: String): Int {
     var numero = ""
     var operacion = '+'
@@ -198,7 +197,6 @@ fun evaluarExpresion(exp: String): Int {
         }
     }
 
-    // Aplicar el último número
     if (numero.isNotEmpty()) {
         val n = numero.toInt()
         when (operacion) {
