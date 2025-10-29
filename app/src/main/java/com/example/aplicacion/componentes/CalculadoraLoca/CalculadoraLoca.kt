@@ -14,11 +14,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CalculadoraLoca(modifier: Modifier = Modifier) {
-    // Numeros que se escriben y el resultado
+
     var expresion by remember { mutableStateOf("") }
     var resultado by remember { mutableStateOf("") }
 
-    // Números cambiados
     val numeros = mapOf(
         "0" to "2",
         "1" to "3",
@@ -31,7 +30,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
         "9" to "1"
     )
 
-    // Operaciones cambiadas
     val operaciones = mapOf(
         "@" to "+",
         "#" to "-",
@@ -52,7 +50,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            //Mostrar la expresion escrita real
             Text(
                 text = expresion,
                 modifier = Modifier
@@ -61,7 +58,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 textAlign = TextAlign.End,
                 fontSize = 26.sp
             )
-            //Mostrar resultado
             Text(
                 text = if (resultado.isNotEmpty()) "Resultado: $resultado" else "",
                 modifier = Modifier
@@ -74,7 +70,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Crear oden filas
             val filas = listOf(
                 listOf("7", "8", "9"),
                 listOf("3", "4", "6"),
@@ -95,10 +90,10 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(6.dp)
-                                .height(70.dp), // botones más altos
-                            shape = MaterialTheme.shapes.small, // Cuadrados
+                                .height(70.dp),
+                            shape = MaterialTheme.shapes.small,
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFFD3D3D3) // Gris claro
+                                containerColor = Color(0xFFD3D3D3)
                             ),
                         ) {
                             Text(text = num, fontSize = 24.sp, color = Color.Black)
@@ -107,7 +102,6 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 }
             }
 
-            // Botones de operaciones
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
@@ -129,12 +123,10 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 }
             }
 
-            // Botones de C y =
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                //Boton limpiar
                 Button(
                     onClick = {
                         expresion = ""
@@ -149,7 +141,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                 ) {
                     Text("C", fontSize = 22.sp, color = Color.Black)
                 }
-                //Resultado sin 5
+
                 Button(
                     onClick = {
                         try {
