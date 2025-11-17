@@ -156,7 +156,7 @@ fun CalculadoraLoca(modifier: Modifier = Modifier) {
                         .padding(4.dp)
                         .height(70.dp),
                     shape = MaterialTheme.shapes.small,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF81D4FA)) // azul claro
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF81D4FA))
                 ) {
                     Text("=", fontSize = 22.sp, color = Color.Black)
                 }
